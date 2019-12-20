@@ -1,0 +1,200 @@
+<div style="text-align:center">
+  <br /><br /><br /><br />
+  <div *ngIf="show; else notshow">
+    <div class="container" id="container">
+      <div class="form-container sign-up-container">
+        <form action="#">
+          <h6>Create Account</h6>
+          <div class="social-container">
+            <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+            <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+          <!-- <span>or use your email for registration</span> -->
+          <input type="text" placeholder="Admin First Name" [(ngModel)]="Name" [ngModelOptions]="{ standalone: true }"/>
+          <input type="text" placeholder=" Admin Last Name" [(ngModel)]="Last" [ngModelOptions]="{ standalone: true }"/>
+          <input type="email" placeholder="Admin Email" [(ngModel)]="email" [ngModelOptions]="{ standalone: true }"/>
+          <input type="number" placeholder="Admin Contact No" [(ngModel)]="Contact" [ngModelOptions]="{ standalone: true }"/>
+          <input type="text" placeholder="Admin Aadhar" [(ngModel)]="Aadhar" [ngModelOptions]="{ standalone: true }"/>
+          <input type="text" placeholder="Admin PAN" [(ngModel)]="PAN" [ngModelOptions]="{ standalone: true }"/>
+          <button>Sign Up</button>
+        </form>
+      </div>
+      <div class="form-container sign-in-container">
+        <form action="#">
+          <h1>Sign in</h1>
+          <div class="social-container">
+            <a href="#" class="social" style="background: rgb(47, 172, 223);"><i class="fa fa-facebook-f"></i></a>
+            <a href="#" class="social" style="background: rgb(243, 101, 101);"><i class="fa fa-google"></i></a>
+            <a href="#" class="social" style="background: rgb(93, 93, 192);"><i class="fa fa-linkedin"></i></a>
+          </div>
+          <span>or use your account</span>
+          <input type="text" placeholder="Enter Username" [(ngModel)]="username" [ngModelOptions]="{ standalone: true }"/>
+          <input type="password" placeholder="Password" [(ngModel)]="password" [ngModelOptions]="{ standalone: true }"/>
+          <input type="text" placeholder="Status" [(ngModel)]="Status" [ngModelOptions]="{ standalone: true }"/>
+          <input type="text" placeholder="Role" [(ngModel)]="Role" [ngModelOptions]="{ standalone: true }"/>
+          <a href="#">Forgot your password?</a>
+          <button (click)="login(username,password)">Sign In</button>
+        </form>
+      </div>
+      <div class="overlay-container">
+        <div class="overlay">
+          <div class="overlay-panel overlay-left">
+            <h1>Welcome Back!</h1>
+            <p>
+              To keep connected with us please login with your personal info
+            </p>
+            <button class="ghost" id="signIn" (click)="toggle()">
+              Sign In
+            </button>
+          </div>
+          <div class="overlay-panel overlay-right">
+            <h1>Hello, Doc's!</h1>
+            <p>Enter your personal details and start journey with us</p>
+            <button class="ghost" id="signUp" (click)="toggle()">
+              Sign Up
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <!-- <p>
+    Created with <i class="fa fa-heart"></i> by
+    <a target="_blank" href="https://florin-pop.com">Florin Pop</a>
+    - Read how I created this and how you can join the challenge
+    <a target="_blank" href="https://www.florin-pop.com/blog/2019/03/double-slider-sign-in-up-form/">here</a>.
+  </p> -->
+    </footer>
+  </div>
+
+  <br />
+  <br />
+  <br />
+  <ng-template #notshow>
+    <div class="container" id="container">
+      <div class="form-container sign-in-container">
+        <form action="#">
+          <h2>Create Account</h2>
+          <div class="social-container">
+            <a href="#" class="social" style="background: rgb(47, 174, 216);"><i class="fa fa-facebook-f"></i></a>
+            <a href="#" class="social" style="background: rgb(197, 64, 54);"><i class="fa fa-google"></i></a>
+            <a href="#" class="social " style="background: rgb(93, 93, 192);"><i class="fa fa-linkedin"></i></a>
+          </div>
+          <!-- <span>or use your email for registration</span> -->
+          <div *ngIf="DoctorDiv">
+
+            <input type="text" placeholder="Doctor First Name" [(ngModel)]="doctor.doctorFirstName" [ngModelOptions]="{ standalone: true }"/>
+            <input type="text" placeholder="Doctor Last Name" [(ngModel)]="doctor.doctorLastName" [ngModelOptions]="{ standalone: true }"/>
+            <input type="text" placeholder="Doctor Email" [(ngModel)]="doctor.doctorEmail" [ngModelOptions]="{ standalone: true }"/>
+            <input type="text" placeholder="Specialization" [(ngModel)]="doctor.doctorSpecialization" [ngModelOptions]="{ standalone: true }"/>
+            <input type="text" placeholder="Contact" [(ngModel)]="doctor.doctorContact" [ngModelOptions]="{ standalone: true }"/>
+            <input type="text" placeholder="Education details" [(ngModel)]="doctor.doctorEducationDetail" [ngModelOptions]="{ standalone: true }"/>
+            <input type="text" placeholder="Gender" [(ngModel)]="doctor.gender" [ngModelOptions]="{ standalone: true }"/>
+            <input type="text" placeholder="Date of Birth" [(ngModel)]="doctor.doctorDob" [ngModelOptions]="{ standalone: true }"/>
+            <input type="text" placeholder="Doctor Type" [(ngModel)]="doctor.doctorType" [ngModelOptions]="{ standalone: true }"/>
+            <input type="text" placeholder="Work Location" [(ngModel)]="doctor.doctorWorkLocation" [ngModelOptions]="{ standalone: true }"/>
+
+            
+         
+            <div class="row" >
+             
+               <div class="col-md-6">
+                <button (click)="Next()" style="background:rgb(221, 65, 65)">Next</button>
+               </div>
+               </div>
+
+          </div>
+
+          <div *ngIf="AddressDiv">
+             <input type="text" placeholder="Village Name" [(ngModel)]="doctor.address.addressVillage" [ngModelOptions]="{ standalone: true }"/>
+            <input type="text" placeholder="Taluka Name" [(ngModel)]="doctor.address.addressTalName" [ngModelOptions]="{ standalone: true }"/>
+            <input type="text" placeholder="District Name" [(ngModel)]="doctor.address.addressDistName" [ngModelOptions]="{ standalone: true }"/>
+            <input type="text" placeholder="State Name" [(ngModel)]="doctor.address.addressStateName" [ngModelOptions]="{ standalone: true }"/>
+            <input type="text" placeholder="Country Name" [(ngModel)]="doctor.address.addressCountryName" [ngModelOptions]="{ standalone: true }"/>
+            <input type="text" placeholder="Zip Code" [(ngModel)]="doctor.address.addressZiPcode" [ngModelOptions]="{ standalone: true }"/>
+           
+            <div class="row" >
+              <div class="col-md-6">
+               <button (click)="pri()" style="background:rgb(240, 58, 58)">prev</button>
+              </div>
+               <div class="col-md-6">
+                <button (click)="Next1()" style="background:rgb(221, 65, 65)">Next</button>
+               </div>
+               </div>
+
+            </div>
+
+            <div *ngIf="LoginDiv">
+            <input type="text" placeholder="Login Username" [(ngModel)]="doctor.login.loginUserName" [ngModelOptions]="{ standalone: true }"/>
+            <input type="text" placeholder="Login Password" [(ngModel)]="doctor.login.loginPassword" [ngModelOptions]="{ standalone: true }"/>
+            <input type="text" placeholder="Status" [(ngModel)]="doctor.login.status" [ngModelOptions]="{ standalone: true }"/>
+            <input type="text" placeholder="Role" [(ngModel)]="doctor.login.role" [ngModelOptions]="{ standalone: true }"/> 
+
+            
+            <div class="row" >
+              <div class="col-md-6">
+               <button (click)="pri1()" style="background:rgb(240, 58, 58)">prev</button>
+              </div>
+               <div class="col-md-6">
+                <button (click)="Next2()" style="background:rgb(221, 65, 65)">Next</button>
+               </div>
+               </div>
+                      </div>
+                      <div *ngIf="SignupDiv">
+                      <button (click)="addDoc()">Sign Up</button>
+                      </div>
+        </form>
+        
+        <!-- <form action="#">
+      <h1>Sign in</h1>
+      <div class="social-container">
+        <a href="#" class="social"><i class="fa fa-facebook-f"></i></a>
+        <a href="#" class="social"><i class="fa fa-google"></i></a>
+        <a href="#" class="social"><i class="fa fa-linkedin"></i></a>
+      </div>
+      <span>or use your account</span>
+      <input type="email" placeholder="Email" />
+      <input type="password" placeholder="Password" />
+      <a href="#">Forgot your password?</a>
+      <button>Sign In</button>
+    </form> -->
+      </div>
+      <div class="form-container sign-up-container"></div>
+      <div class="overlay-container">
+        <div class="overlay">
+          <div class="overlay-panel overlay-right">
+            <h1>Welcome Back!</h1>
+            <p>
+              To keep connected with us please login with your personal info
+            </p>
+            <button class="ghost" id="signIn" (click)="toggle1()">
+              Sign In
+            </button>
+          </div>
+          <div class="overlay-panel overlay-left">
+            <h1>Hello, Doc's!</h1>
+            <p>Enter your personal details and start journey with us</p>
+            <button class="ghost" id="signUp" (click)="toggle()">
+              Sign Up
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <!-- <p>
+    Created with <i class="fa fa-heart"></i> by
+    <a target="_blank" href="https://florin-pop.com">Florin Pop</a>
+    - Read how I created this and how you can join the challenge
+    <a
+      target="_blank"
+      href="https://www.florin-pop.com/blog/2019/03/double-slider-sign-in-up-form/"
+      >here</a
+    >.
+  </p> -->
+    </footer>
+  </ng-template>
+</div>
